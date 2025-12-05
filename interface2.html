@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ImpossibleForm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dee6ec;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 40px;
+        }
+
+            h1 {
+                margin: 0 0 20px 0;
+            }
+
+            .container {
+                display: flex;
+                gap: 20px;
+            }
+
+            .box {
+                background-color: #fff;
+                padding: 30px 20px;
+                width: 180px;
+                height: 250px;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .box h2 {
+                margin: 0;
+                font-size: 20px;
+            }
+
+            .box button {
+                padding: 10px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .box button.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .box button.frustrant {
+                background-color: #ccc;
+                color: #666;
+            }
+
+            
+            #popupForm {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                z-index: 100;
+               
+            }
+
+            #popupForm input {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                font-size: 16px;
+            }
+
+            #submitBtn {
+                margin-top: 15px;
+                padding: 10px;
+                background: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 20px;
+                cursor: pointer;
+                background: none;
+                border: none;
+            }
+
+            .box button.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .box button.frustrant {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            #name,
+            #age {
+                width: 150px;
+                height: 20px;
+                font-size: 16px;
+                padding: 5px 10px;
+            }
+    </style>
+</head>
+
+<body>
+    <h1>Select an option</h1>
+    <div class="container">
+       
+        <div class="box">
+            <h2>Sport</h2>
+            <p>Tell us about your favorite sports and how often you play.</p>
+            <button class="active" id="formBtn">let's play</button>
+        </div>
+
+        
+        <div class="box">
+            <h2>Gaming</h2>
+            <p>Share your gaming adventures and top games you love.</p>
+            <button class="frustrant" id="gamingBtn">let's play</button>
+        </div>
+
+       
+        <div class="box">
+            <h2>Music</h2>
+            <p>Let us know about your music taste and favorite tracks.</p>
+            <button class="frustrant" id="musicBtn">let's play</button>
+        </div>
+    </div>
+
+    
+    <div id="popupForm">
+        <button class="close-btn" id="closePopup">&times;</button>
+        <h2>Impossible Form Game</h2>
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Your name"><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" placeholder="Your age"><br><br>
+
+        <label for="sport">Preferred Sport:</label><br>
+        <select id="sport" name="sport">
+            <option value="soccer">Soccer</option>
+            <option value="basketball">Basketball</option>
+            <option value="tennis">Tennis</option>
+            <option value="swimming">Swimming</option>
+        </select><br><br>
+
+        <label for="frequency">Practice Frequency:</label><br>
+        <input type="radio" id="once" name="frequency" value="once">
+        <label for="once">1–2 times/week</label><br>
+        <input type="radio" id="few" name="frequency" value="few">
+        <label for="few">3–5 times/week</label><br>
+        <input type="radio" id="daily" name="frequency" value="daily">
+        <label for="daily">Daily</label><br><br>
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <script>
+        
+        const formBtn = document.getElementById("formBtn");
+        const popupForm = document.getElementById("popupForm");
+        const closePopup = document.getElementById("closePopup");
+
+        formBtn.addEventListener("click", () => {
+            popupForm.style.display = "block";
+        });
+
+        
+        closePopup.addEventListener("click", () => {
+            popupForm.style.display = "none";
+        });
+
+        
+        const gamingBtn = document.getElementById("gamingBtn");
+        gamingBtn.addEventListener("mouseover", () => {
+            const randX = Math.random() * 200 - 100;
+            const randY = Math.random() * 200 - 100;
+            gamingBtn.style.transform = `translate(${randX}px, ${randY}px)`;
+        });
+        gamingBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Haha! This button doesn't work 😜");
+        });
+
+        
+        const musicBtn = document.getElementById("musicBtn");
+        musicBtn.addEventListener("mouseover", () => {
+            const randX = Math.random() * 200 - 100;
+            const randY = Math.random() * 200 - 100;
+            musicBtn.style.transform = `translate(${randX}px, ${randY}px)`;
+        });
+        musicBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Oops! Not here 😎");
+        });
+
+        
+        const nameField = document.getElementById("name");
+        let eraseTimeout;
+        nameField.addEventListener("input", () => {
+            clearTimeout(eraseTimeout);
+            eraseTimeout = setTimeout(() => {
+                nameField.value = "";
+            }, 800);
+        });
+
+        const emojiList = ["😀", "😂", "🙃", "😳", "🤡", "👀", "🔥", "✨", "💩", "🤖", "🎲"];
+        nameField.addEventListener("input", () => {
+            let input = nameField.value;
+            let result = "";
+            for (let i = 0; i < input.length; i++) {
+                if (Math.random() < 0.5) {
+                    result += input[i];
+                } else {
+                    result += emojiList[Math.floor(Math.random() * emojiList.length)];
+                }
+            }
+            nameField.value = result;
+        });
+
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.addEventListener("mouseover", () => {
+            const randX = Math.random() * 200 - 100;
+            const randY = Math.random() * 50 - 25;
+            submitBtn.style.transform = `translate(${randX}px, ${randY}px)`;
+        });
+        submitBtn.addEventListener("click", () => {
+            alert("YOU ACTUALLY MANAGED TO CLICK?! 😱 Respect.");
+        });
+
+        const ageField = document.getElementById("age");
+
+        ageField.addEventListener("input", () => {
+            let currentAge = parseInt(ageField.value);
+            if (!isNaN(currentAge)) {
+               
+                let randomAdd = Math.random() < 0.5 ? 2 : 3;
+                ageField.value = currentAge + randomAdd;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
